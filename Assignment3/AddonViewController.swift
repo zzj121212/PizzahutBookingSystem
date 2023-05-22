@@ -10,9 +10,19 @@ import Foundation
 import UIKit
 
 class AddonViewController: UIViewController {
-    var addonDictionary = ["Chip": 3.5,"Nuggets":4.5,"Salad":5.5  ]
-    var amount = 0
-    var totalPrice = 0.0
+    
+  
+    
+   
+    @IBOutlet weak var chipsPrice: UILabel!
+    @IBOutlet weak var nuggetsPrice: UILabel!
+    @IBOutlet weak var saladPrice: UILabel!
+    
+    @IBOutlet weak var totalPrice: UILabel!
+   
+    var amountOfNuggets = 0
+    var amountOfChips = 0
+    var amountOfSalad = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,4 +35,28 @@ class AddonViewController: UIViewController {
 //        }
 //    }
 
+    
+    @IBAction func sliderChanged(_ sender: UISlider) {
+        var totalPriceVar = 0
+
+        if sender.tag == 1{
+            amountOfNuggets = Int(sender.value)
+            nuggetsPrice.text = "\(amountOfNuggets)"
+        }
+        if sender.tag == 2{
+            amountOfChips = Int(sender.value)
+            chipsPrice.text = "\(amountOfChips)"
+        }
+        if sender.tag == 3{
+            amountOfSalad = Int(sender.value)
+            saladPrice.text = "\(amountOfSalad)"
+        }
+        
+        totalPriceVar = 3 * amountOfNuggets + 4 * amountOfChips + 5 * amountOfSalad
+        totalPrice.text = "\(totalPriceVar)"
+        
+ 
+    }
+    
+    
 }

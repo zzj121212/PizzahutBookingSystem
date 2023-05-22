@@ -10,9 +10,20 @@ import Foundation
 import UIKit
 
 class BeverageViewController: UIViewController {
-    var beverageDictionary = ["Coke Zero": 3.0,"Spite":3.5,"Fanta":3.5  ]
-    var amount = 0.0
-    var totalPrice = 0.0
+    
+    
+    @IBOutlet weak var cokeAmount: UILabel!
+    
+    @IBOutlet weak var lemonAmount: UILabel!
+    
+    @IBOutlet weak var teaAmount: UILabel!
+    
+    
+    @IBOutlet weak var totalPrice: UILabel!
+    
+    var amountOfCoke = 0
+    var amountOfLemon = 0
+    var amountOftea = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,5 +35,27 @@ class BeverageViewController: UIViewController {
             //dest.costumerName = NameTextZone.text!
         }
     }
+    
+    
+    @IBAction func sliderChange(_ sender: UISlider) {
+        var totalPriceVar = 0
+
+        if sender.tag == 1{
+            amountOfCoke = Int(sender.value)
+            cokeAmount.text = "\(amountOfCoke)"
+        }
+        if sender.tag == 2{
+            amountOfLemon = Int(sender.value)
+            lemonAmount.text = "\(amountOfLemon)"
+        }
+        if sender.tag == 3{
+            amountOftea = Int(sender.value)
+            teaAmount.text = "\(amountOftea)"
+        }
+        
+        totalPriceVar = 3 * amountOfCoke + 4 * amountOfLemon + 5 * amountOftea
+        totalPrice.text = "\(totalPriceVar)"
+    }
+    
 
 }
