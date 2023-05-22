@@ -13,6 +13,9 @@ class PizzaViewController: UIViewController {
     var amountOfHa = 0
     var amountOfCC = 0
     var amountOfVC = 0
+    var previousPrice = 0
+    var totalPrice = 0
+
     
     @IBOutlet weak var TotalPriceLabel: UILabel!
     @IBOutlet weak var amount2: UILabel!
@@ -25,17 +28,10 @@ class PizzaViewController: UIViewController {
         super.viewDidLoad()
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "finishPizza" {
-//            let dest = segue.destination as! DisplayViewController
-//
-//            //dest.playerName = playerName.text!
-//        }
-//    }
-//
+
+
     
     @IBAction func sliderChanged(_ sender: UISlider) {
-        var totalPrice = 0
 
         if sender.tag == 1{
             amountOfHa = Int(sender.value)
@@ -52,8 +48,17 @@ class PizzaViewController: UIViewController {
         
         totalPrice = 14*amountOfHa + 16*amountOfCC + 13*amountOfVC
         TotalPriceLabel.text = "\(totalPrice)"
+        
+        
 
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       if segue.identifier == "finishPizzaOrder" {
+           let dest = segue.destination as! AddonViewController
+           dest.previousPrice = totalPrice
+       }
+   }
+
     
    
 

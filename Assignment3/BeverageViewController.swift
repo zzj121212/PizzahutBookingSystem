@@ -11,7 +11,9 @@ import UIKit
 
 class BeverageViewController: UIViewController {
     
+    @IBOutlet weak var pizzaOrderedLabel: UILabel!
     
+    @IBOutlet weak var AddONOrderedLabel: UILabel!
     @IBOutlet weak var cokeAmount: UILabel!
     
     @IBOutlet weak var lemonAmount: UILabel!
@@ -24,21 +26,27 @@ class BeverageViewController: UIViewController {
     var amountOfCoke = 0
     var amountOfLemon = 0
     var amountOftea = 0
+    var totalPriceVar = 0
+    var pizzaOrdered = 0
+    var AddonOrdered = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        pizzaOrderedLabel.text = "\(pizzaOrdered)"
+        AddONOrderedLabel.text = "\(AddonOrdered)"
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "finishOrder" {
+        if segue.identifier == "FinishOrder" {
             let dest = segue.destination as! DisplayViewController
-            //dest.costumerName = NameTextZone.text!
+            dest.addonPrice = AddonOrdered
+            dest.beveragePrice = totalPriceVar
+            dest.pizzaPrice = pizzaOrdered
         }
     }
     
     
     @IBAction func sliderChange(_ sender: UISlider) {
-        var totalPriceVar = 0
 
         if sender.tag == 1{
             amountOfCoke = Int(sender.value)

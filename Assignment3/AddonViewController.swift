@@ -18,26 +18,32 @@ class AddonViewController: UIViewController {
     @IBOutlet weak var nuggetsPrice: UILabel!
     @IBOutlet weak var saladPrice: UILabel!
     
+    @IBOutlet weak var previousPriceLabel: UILabel!
     @IBOutlet weak var totalPrice: UILabel!
    
     var amountOfNuggets = 0
     var amountOfChips = 0
     var amountOfSalad = 0
+    var previousPrice = 0
+    var totalPriceVar = 0
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        previousPriceLabel.text = "\(previousPrice)"
         // Do any additional setup after loading the view.
     }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "finishOrder" {
-//            let dest = segue.destination as! DisplayViewController
-//            //dest.costumerName = NameTextZone.text!
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "finishAddonOrder" {
+            let dest = segue.destination as! BeverageViewController
+            dest.pizzaOrdered = previousPrice
+            dest.AddonOrdered = totalPriceVar
+        }
+    }
 
     
     @IBAction func sliderChanged(_ sender: UISlider) {
-        var totalPriceVar = 0
 
         if sender.tag == 1{
             amountOfNuggets = Int(sender.value)
@@ -54,6 +60,8 @@ class AddonViewController: UIViewController {
         
         totalPriceVar = 3 * amountOfNuggets + 4 * amountOfChips + 5 * amountOfSalad
         totalPrice.text = "\(totalPriceVar)"
+        previousPriceLabel.text = "\(previousPrice)"
+
         
  
     }
