@@ -15,6 +15,7 @@ class PizzaViewController: UIViewController {
     var amountOfVC = 0
     var previousPrice = 0
     var totalPrice = 0
+    var name = ""
 
     
     @IBOutlet weak var TotalPriceLabel: UILabel!
@@ -56,6 +57,7 @@ class PizzaViewController: UIViewController {
        if segue.identifier == "finishPizzaOrder" {
            let dest = segue.destination as! AddonViewController
            dest.previousPrice = totalPrice
+           dest.name = name
        }
    }
 

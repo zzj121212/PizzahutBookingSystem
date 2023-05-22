@@ -23,6 +23,8 @@ class BeverageViewController: UIViewController {
     
     @IBOutlet weak var totalPrice: UILabel!
     
+    var name = ""
+    
     var amountOfCoke = 0
     var amountOfLemon = 0
     var amountOftea = 0
@@ -42,6 +44,7 @@ class BeverageViewController: UIViewController {
             dest.addonPrice = AddonOrdered
             dest.beveragePrice = totalPriceVar
             dest.pizzaPrice = pizzaOrdered
+            dest.name = name
         }
     }
     

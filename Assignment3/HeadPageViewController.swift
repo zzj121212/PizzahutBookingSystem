@@ -18,7 +18,7 @@ class HeadPageViewController: UIViewController, UITextFieldDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "startOrder" {
-            let dest = segue.destination as! DisplayViewController
+            let dest = segue.destination as! PizzaViewController
             dest.name = NameTextZone.text!
         }
     }

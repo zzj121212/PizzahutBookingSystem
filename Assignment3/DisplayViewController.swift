@@ -31,7 +31,7 @@ class DisplayViewController: UIViewController {
         pizzaPriceLabel.text = "\(pizzaPrice)"
         addonPriceLabel.text = "\(addonPrice)"
         beveragePriceLabel.text = "\(beveragePrice)"
-        nameLabel.text = "\(name)"
+        nameLabel.text = name
     }
 
 

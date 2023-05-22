@@ -26,6 +26,7 @@ class AddonViewController: UIViewController {
     var amountOfSalad = 0
     var previousPrice = 0
     var totalPriceVar = 0
+    var name = ""
 
 
     override func viewDidLoad() {
@@ -39,6 +40,7 @@ class AddonViewController: UIViewController {
             let dest = segue.destination as! BeverageViewController
             dest.pizzaOrdered = previousPrice
             dest.AddonOrdered = totalPriceVar
+            dest.name = name
         }
     }
 
